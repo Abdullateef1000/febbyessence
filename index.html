@@ -1,0 +1,572 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Febby Essence</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Montserrat:wght@300;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+    --accent: #c9a96e;         /* luxury champagne gold */
+    --accent-hover: #b8860b;   /* deeper gold hover */
+    --dark: #2f2f2f;
+    --light: #ffffff;
+    --bg-1: #fffdf9;
+    --bg-2: #f9f4ec;
+    --bg-3: #fdf8f1;
+    --card: rgba(255,255,255,0.95);
+}
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    font-family: 'Montserrat', sans-serif;
+    color: var(--dark);
+    background: linear-gradient(135deg, #fffdf9, #f9f4ec, #fefaf4, #ffffff);
+    background-size: 400% 400%;
+    animation: luxuryBg 14s ease infinite;
+    overflow-x: hidden;
+}
+
+/* Elegant animated background */
+@keyframes luxuryBg {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* HEADER */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+    background: rgba(255,255,255,0.92);
+    backdrop-filter: blur(12px);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.04);
+}
+
+/* Attractive brand hover */
+header h1 {
+    font-family: 'Playfair Display', serif;
+    cursor: pointer;
+    transition: all 0.35s ease;
+    color: #222;
+}
+
+header h1:hover {
+    color: var(--accent-hover);
+    transform: scale(1.08);
+    text-shadow: 0 0 14px rgba(201,169,110,0.45);
+}
+
+/* NAVIGATION */
+nav {
+    display: flex;
+    gap: 1.2rem;
+}
+
+nav a {
+    text-decoration: none;
+    color: var(--dark);
+    font-weight: 600;
+    transition: 0.3s;
+}
+
+nav a:hover {
+    color: var(--accent-hover);
+}
+
+/* CART */
+.cart-indicator {
+    font-size: 1.5rem;
+    cursor: pointer;
+    position: relative;
+    transition: 0.3s;
+}
+
+.cart-indicator:hover {
+    transform: scale(1.08);
+}
+
+.cart-indicator::after {
+    content: attr(data-count);
+    position: absolute;
+    top: -8px;
+    right: -10px;
+    background: var(--accent-hover);
+    color: white;
+    border-radius: 50%;
+    padding: 3px 7px;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+/* HERO */
+.hero {
+    height: 80vh;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: white;
+    background: url('images/images (18).jpeg') no-repeat center/cover;
+    background-size: cover;
+    background-position: center 40%;
+    overflow: hidden;
+    /* subtle slow background motion */
+    animation: heroBg 20s ease-in-out infinite;
+}
+
+.hero::before{
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(0,0,0,0.25), rgba(0,0,0,0.45));
+    mix-blend-mode: multiply;
+}
+
+.hero > div{ position: relative; z-index: 2; }
+
+.hero h2 {
+    font-size: 3rem;
+    font-family: 'Playfair Display', serif;
+    text-shadow: 0 6px 20px rgba(0,0,0,0.45);
+}
+
+@keyframes heroBg{
+    0%{ background-position: center 30%; }
+    50%{ background-position: center 70%; }
+    100%{ background-position: center 30%; }
+}
+
+/* BUTTONS */
+.cta-button {
+    display: inline-block;
+    margin-top: 1rem;
+    padding: 0.9rem 1.7rem;
+    background: linear-gradient(135deg, var(--accent), #e7d2a6);
+    color: white;
+    text-decoration: none;
+    border: none;
+    border-radius: 40px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: 0.35s ease;
+    box-shadow: 0 4px 15px rgba(201,169,110,0.25);
+}
+
+.cta-button:hover {
+    background: linear-gradient(135deg, var(--accent-hover), var(--accent));
+    transform: translateY(-3px);
+    box-shadow: 0 0 18px rgba(201,169,110,0.45);
+}
+
+/* SECTION */
+.section {
+    padding: 4rem 2rem;
+    text-align: center;
+}
+
+.section h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 2rem;
+}
+
+/* PRODUCT CARDS */
+.cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 2rem;
+    max-width: 1200px;
+    margin: auto;
+    margin-top: 2rem;
+}
+
+.card {
+    background: var(--card);
+    border-radius: 24px;
+    padding: 1rem;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.06);
+    transition: all 0.35s ease;
+    border: 1px solid rgba(255,255,255,0.7);
+}
+
+.card:hover {
+    transform: translateY(-8px) scale(1.03);
+    box-shadow: 0 0 22px rgba(201,169,110,0.25);
+}
+
+.card img {
+    width: 100%;
+    height: 240px;
+    object-fit: cover;
+    border-radius: 18px;
+}
+
+.card h3 {
+    margin: 1rem 0 0.4rem;
+    font-family: 'Playfair Display', serif;
+}
+
+.price {
+    color: var(--accent-hover);
+    font-weight: 600;
+}
+
+/* FOOTER */
+footer {
+    text-align: center;
+    padding: 2rem;
+    background: rgba(255,255,255,0.95);
+}
+
+/* SCROLL BUTTON */
+#scrollTopBtn {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 50px;
+    height: 50px;
+    border: none;
+    border-radius: 50%;
+    background: var(--accent-hover);
+    color: white;
+    font-size: 1.4rem;
+    cursor: pointer;
+    display: none;
+}
+
+/* CART MODAL */
+.cart-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0,0,0,0.45);
+    z-index: 2000;
+    display: none; /* hidden until .open */
+}
+.cart-modal.open{ display:flex; animation: fadeIn .22s ease both; }
+.cart-modal.closing{ animation: fadeOut .18s ease both; }
+
+.cart-content {
+    background: var(--card);
+    padding: 2rem;
+    border-radius: 12px;
+    max-width: 480px;
+    width: 90%;
+    color: var(--dark);
+    text-align: left;
+    position: relative;
+    transform-origin: center;
+    animation: popIn .18s ease both;
+}
+.cart-modal.closing .cart-content{ animation: popOut .15s ease both; }
+.cart-content .close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    border: none;
+    background: transparent;
+    font-size: 1.6rem;
+    cursor: pointer;
+}
+#cartItems p{margin:0.4rem 0;padding:0.2rem 0;border-bottom:1px solid rgba(0,0,0,0.06);}
+.cart-actions{display:flex;gap:0.8rem;justify-content:flex-end;margin-top:1rem}
+
+@keyframes fadeIn{ from{ opacity:0 } to{ opacity:1 } }
+@keyframes fadeOut{ from{ opacity:1 } to{ opacity:0 } }
+@keyframes popIn{ from{ transform: scale(.96); opacity:0 } to{ transform: scale(1); opacity:1 } }
+@keyframes popOut{ from{ transform: scale(1); opacity:1 } to{ transform: scale(.96); opacity:0 } }
+</style>
+</head>
+<body>
+
+<header>
+    <h1 id="logo">Febby Essences</h1>
+
+    <nav>
+        <a href="#collection">Collection</a>
+        <a href="#contact">Contact</a>
+    </nav>
+
+    <div class="cart-indicator" onclick="openCart()" data-count="0">🛒</div>
+</header>
+
+<section class="hero">
+    <div> <marquee behavior="scroll" direction="left" scrollamount="8">
+        <h2>Discover the Essence of Elegance</h2>
+        </marquee>
+        <a href="#collection" class="cta-button">Shop Here</a>
+    </div>
+</section>
+
+<section class="section" id="collection">
+    <h2>Luxury Perfume Collection</h2>
+
+    <div class="cards">
+
+        <div class="card">
+            <img src="images/IMG-20260428-WA0078.jpg" alt="GK Men">
+            <h3>GK Men</h3>
+            <p class="price">₦9,989</p>
+            <button class="cta-button" onclick="addToCart('GK Men',10000)">Add to Cart</button>
+        </div>
+
+        <div class="card">
+            <img src="images/IMG-20260428-WA0076.jpg" alt="Mousuf">
+            <h3>Mousuf</h3>
+            <p class="price">₦10,000</p>
+            <button class="cta-button" onclick="addToCart('Mousuf',10000)">Add to Cart</button>
+        </div>
+
+        <div class="card">
+            <img src="images/IMG-20260428-WA0081.jpg" alt="Yara Perfume">
+            <h3>Yara Perfume</h3>
+            <p class="price">₦1,500</p>
+            <button class="cta-button" onclick="addToCart('Yara Perfume',1500)">Add to Cart</button>
+        </div>
+
+        <div class="card">
+            <img src="images/IMG-20260428-WA0084.jpg" alt="Khamrah">
+            <h3>Khamrah</h3>
+            <p class="price">₦7,000</p>
+            <button class="cta-button" onclick="addToCart('Khamrah',7000)">Add to Cart</button>
+        </div>
+
+        <div class="card">
+            <img src="images/IMG-20260428-WA0086.jpg" alt="Smart Collection Oil">
+            <h3>Smart Collection Oil</h3>
+            <p class="price">₦24,000</p>
+            <button class="cta-button" onclick="addToCart('Smart Collection Oil',24000)">Add to Cart</button>
+        </div>
+
+        <div class="card">
+            <img src="images/images (11).jpeg" alt="Nivea Body Spray">
+            <h3>Nivea Roll on </h3>
+            <p class="price">₦2,000</p>
+            <button class="cta-button" onclick="addToCart('Nivea Body Spray',20000)">Add to Cart</button>
+        </div>
+        
+        <div class="card">
+            <img src="images/IMG-20260428-WA0084.jpg" alt="Asad">
+            <h3>Asad</h3>
+            <p class="price">₦10,500</p>
+            <button class="cta-button" onclick="addToCart('Asad',10,500)">Add to Cart</button>
+        </div>
+
+        <div class="card">
+            <img src="images/IMG-20260428-WA0086.jpg" alt="Pencil's Oil">
+            <h3>Pencil's Oil</h3>
+            <p class="price">₦1,500</p>
+            <button class="cta-button" onclick="addToCart('Pencils Oil',1500)">Add to Cart</button>
+        </div>
+
+        <div class="card">
+            <img src="images/images (10).jpeg" alt="Body Mist">
+            <h3>Body Mist</h3>
+            <p class="price">₦5,000</p>
+            <button class="cta-button" onclick="addToCart('Body Mist',5000)">Add to Cart</button>
+        </div>
+
+        <div class="card">
+            <img src="images/images (13).jpeg" alt="Explore">
+            <h3>Explore</h3>
+            <p class="price">₦10,000</p>
+            <button class="cta-button" onclick="addToCart('Explore',10000)">Add to Cart</button>
+        </div>
+
+        <div class="card">
+            <img src="images/images (14).jpeg" alt="Caribbean Vanilla">
+            <h3>Caribbean Vanilla</h3>
+            <p class="price">₦8,000</p>
+            <button class="cta-button" onclick="addToCart('Caribbean Vanilla',8000)">Add to Cart</button>
+        </div>
+
+        <div class="card">
+            <img src="images/images (15).jpeg" alt="Barrakat Rough">
+            <h3>Barrakat Rough</h3>
+            <p class="price">₦8,000</p>
+            <button class="cta-button" onclick="addToCart('Barrakat Rough',8000)">Add to Cart</button>
+        </div>
+        
+        <div class="card">
+            <img src="images/images (16).jpeg" alt="afnaan">
+            <h3>AFNAAN</h3>
+            <p class="price">₦9,999</p>
+            <button class="cta-button" onclick="addToCart('AFNAAN',9000)">Add to Cart</button>
+        </div>
+
+        <div class="card">
+            <img src="images/images (17).jpeg" alt="Goodgirl">
+            <h3>Goodgirl</h3>
+            <p class="price">₦9,999</p>
+            <button class="cta-button" onclick="addToCart('Goodgirl',9999)">Add to Cart</button>
+        </div>
+
+        <div class="card">
+            <img src="images/images (18).jpeg" alt="Carribean Vanilla">
+            <h3>Carribean Vanilla</h3>
+            <p class="price">₦26,000</p>
+            <button class="cta-button" onclick="addToCart('Carribean Vanilla',26000)">Add to Cart</button>
+        </div>
+
+        <div class="card">
+            <img src="images/images (19).jpeg" alt="Dolce & Gabbana">
+            <h3>Dolce & Gabbana</h3>
+            <p class="price">₦25,000</p>
+            <button class="cta-button" onclick="addToCart('Dolce & Gabbana',250000)">Add to Cart</button>
+        </div>
+
+        <div class="card">
+            <img src="images/images (20).jpeg" alt="CR7">
+            <h3>CR7</h3>
+            <p class="price">₦24,000</p>
+            <button class="cta-button" onclick="addToCart('CR7',240000)">Add to Cart</button>
+        </div>
+
+        <div class="card">
+            <img src="images/images (6).jpeg" alt="Riggs">
+            <h3>Riggs</h3>
+            <p class="price">₦2,500</p>
+            <button class="cta-button" onclick="addToCart('Riggs',25000)">Add to Cart</button>
+        </div>
+        
+        <div class="card">
+            <img src="images/images (8).jpeg" alt="Body Spray Collection">
+            <h3>Body Spray Collection</h3>
+            <p class="price">₦20,000</p>
+            <button class="cta-button" onclick="addToCart('Body Spray Collection',20000)">Add to Cart</button>
+        </div>
+
+        <div class="card">
+            <img src="images/images (9).jpeg" alt="Faidra">
+            <h3>Faidra</h3>
+            <p class="price">₦4,000</p>
+            <button class="cta-button" onclick="addToCart('Faidra',4000)">Add to Cart</button>
+        </div>
+
+       
+    </div>
+</section>
+
+<!-- CART MODAL -->
+<div id="cartModal" class="cart-modal">
+    <div class="cart-content">
+        <button class="close" onclick="closeCart()">×</button>
+        <h2>Your Cart</h2>
+        <div id="cartItems"><p>Cart is empty</p></div>
+        <p id="cartTotal">Total: ₦0</p>
+        <div class="cart-actions">
+            <button class="cta-button" onclick="orderNow()">Order Now</button>
+            <button class="cta-button" onclick="closeCart()">Continue Shopping</button>
+        </div>
+    </div>
+</div>
+
+<section class="section" id="contact">
+    <h2>Contact Us</h2>
+    <p>For perfume oil, body spray, roll-on and deodorants</p>
+    <a href="https://wa.me/2349040048467" class="cta-button">Chat on WhatsApp</a>
+</section>
+
+<footer>
+    © 2026 Febby Essence. All rights reserved.
+</footer>
+
+<button id="scrollTopBtn" onclick="scrollToTop()">↑</button>
+
+<script>
+let cart=[];
+
+function addToCart(name,price){
+    let existing=cart.find(item=>item.name===name);
+
+    if(existing){
+        existing.quantity++;
+        existing.total=existing.quantity*existing.price;
+    }else{
+        cart.push({
+            name:name,
+            price:price,
+            quantity:1,
+            total:price
+        });
+    }
+
+    updateCartCount();
+    alert(name+" added successfully");
+}
+
+function updateCartCount(){
+    let count=cart.reduce((sum,item)=>sum+item.quantity,0);
+    document.querySelector(".cart-indicator")
+    .setAttribute("data-count",count);
+}
+
+function openCart(){
+    const modal = document.getElementById("cartModal");
+    modal.style.display = "flex";
+
+    let cartHTML = "";
+    let total = 0;
+
+    if (cart.length === 0) {
+        document.getElementById("cartItems").innerHTML = "<p>Cart is empty</p>";
+        document.getElementById("cartTotal").innerHTML = "Total: ₦0";
+        return;
+    }
+
+    cart.forEach(item=>{
+        cartHTML += `\n            <p>${item.name} (x${item.quantity}) - ₦${item.total.toLocaleString()}</p>`;
+        total += item.total;
+    });
+
+    document.getElementById("cartItems").innerHTML = cartHTML;
+    document.getElementById("cartTotal").innerHTML = "Total: ₦" + total.toLocaleString();
+}
+
+function closeCart(){
+    document.getElementById("cartModal").style.display="none";
+}
+
+function orderNow(){
+    // friendly welcome message + product list encoded for URL
+    let message = "👋 Welcome to Febby Essence! 🌸%0A%0AThank you for reaching out. We sell luxury scents that make you unforgettable.%0A%0AWe have: Perfumes, Body Sprays, Body Mists, Perfume Oils, Roll-on & Deodorants.%0A%0AI would like to order:%0A";
+
+    if (cart.length === 0) {
+        alert('Your cart is empty');
+        return;
+    }
+
+    cart.forEach(item=>{
+        message += `${item.name} (x${item.quantity}) - ₦${item.total.toLocaleString()}%0A`;
+    });
+
+    let total = cart.reduce((sum,item)=>sum+item.total,0);
+
+    message += `%0ATotal: ₦${total.toLocaleString()}%0A%0AHow can I help you smell irresistible today?`;
+
+    // close modal and open WhatsApp
+    closeCart();
+    window.open(`https://wa.me/2349040048467?text=${message}`, "_blank");
+}
+</script>
+</body>
+</html>
