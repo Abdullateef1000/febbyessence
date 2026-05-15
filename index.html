@@ -565,7 +565,7 @@ function orderNow(){
 
     // close modal and open WhatsApp
     closeCart();
-    window.open(`https://wa.me/2349040048467?text=${message}`, "_blank");
+ window.open(`https://wa.me/2349040048467?text=${encodeURIComponent(message)}`, "_blank");
 }
 </script>
 </body>
