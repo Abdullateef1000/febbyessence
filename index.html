@@ -548,10 +548,7 @@ function closeCart(){
 
 function orderNow(){
     // friendly welcome message + product list encoded for URL
-    let message = "👋 Welcome to Febby Essence! 🌸Thank you for reaching out \n\n.";
-    message +=  "We sell luxury scents that make you unforgettable."; 
-    message +="We have: Perfumes, Body Sprays, Body Mists, Perfume Oils, Roll-on & Deodorants."; 
-    message+="I would like to order:";
+    let message ="I would like to order:"
 
     if (cart.length === 0) {
         alert('Your cart is empty');
@@ -564,13 +561,12 @@ function orderNow(){
 
     let total = cart.reduce((sum,item)=>sum+item.total,0);
 
-    message += `Total: ₦${total.toLocaleString()}How can I help you smell irresistible today?`;
+    message += `Total: ₦${total.toLocaleString()}`;
 
     // close modal and open WhatsApp
     closeCart();
     window.open(`https://wa.me/2349040048467?text=${encodeURIComponent(message)}`, "_blank");
 }
-
 </script>
 </body>
 </html>
