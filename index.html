@@ -548,7 +548,10 @@ function closeCart(){
 
 function orderNow(){
     // friendly welcome message + product list encoded for URL
-    let message = "👋 Welcome to Febby Essence! 🌸%0A%0AThank you for reaching out. We sell luxury scents that make you unforgettable.%0A%0AWe have: Perfumes, Body Sprays, Body Mists, Perfume Oils, Roll-on & Deodorants.%0A%0AI would like to order:%0A";
+    let message = "👋 Welcome to Febby Essence! 🌸Thank you for reaching out \n\n.";
+    message +=  "We sell luxury scents that make you unforgettable."; 
+    message +="We have: Perfumes, Body Sprays, Body Mists, Perfume Oils, Roll-on & Deodorants."; 
+    message+="I would like to order:";
 
     if (cart.length === 0) {
         alert('Your cart is empty');
@@ -556,17 +559,18 @@ function orderNow(){
     }
 
     cart.forEach(item=>{
-        message += `${item.name} (x${item.quantity}) - ₦${item.total.toLocaleString()}%0A`;
+        message += `${item.name} (x${item.quantity}) - ₦${item.total.toLocaleString()}\n\n`;
     });
 
     let total = cart.reduce((sum,item)=>sum+item.total,0);
 
-    message += `%0ATotal: ₦${total.toLocaleString()}%0A%0AHow can I help you smell irresistible today?`;
+    message += `Total: ₦${total.toLocaleString()}How can I help you smell irresistible today?`;
 
     // close modal and open WhatsApp
     closeCart();
- window.open(`https://wa.me/2349040048467?text=${encodeURIComponent(message)}`, "_blank");
+    window.open(`https://wa.me/2349040048467?text=${encodeURIComponent(message)}`, "_blank");
 }
+
 </script>
 </body>
 </html>
